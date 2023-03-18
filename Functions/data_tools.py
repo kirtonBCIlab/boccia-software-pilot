@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 import scipy.signal as signal
 
-def import_data(xdf_file:str) -> tuple[mne.io.fiff.raw.Raw, pd.DataFrame, pd.DataFrame]:
+def import_data(xdf_file:str) -> tuple[mne.io.Raw, pd.DataFrame, pd.DataFrame]:
     """
         Imports xdf file and returns the EEG stream, Python response, and Unity stream
 
@@ -20,7 +20,7 @@ def import_data(xdf_file:str) -> tuple[mne.io.fiff.raw.Raw, pd.DataFrame, pd.Dat
 
         Returns
         -------
-            eeg_mne: mne.io.fiff.raw.RAW
+            eeg_mne: mne.io.Raw
                 EEG data in an MNE format
             python_stream: pd.DataFrame
                 DataFrame with the stream of events sent from the BCI-essentials-python backend
@@ -83,3 +83,43 @@ def import_data(xdf_file:str) -> tuple[mne.io.fiff.raw.Raw, pd.DataFrame, pd.Dat
             unity_stream = pd.DataFrame(dict_unity)
     
     return (eeg_mne, python_stream, unity_stream)
+
+def create_epochs(eeg:mne.io.Raw, markers:pd.DataFrame, time:list[float], events=list[str]) -> mne.Epochs:
+    """
+        Creates MNE epoch data from the desired markers (can be Unity or Python stream)
+
+        Parameters
+        ----------
+            eeg: mne.io.fiff.raw.Raw
+                EEG raw array in an MNE format
+            markers: pd.DataFrame
+                Markers used to creathe epochs
+            time: list[float]
+                Times used for epoch data, must be len==2
+            events: list[str]
+                List of strings with the events to use for the epochs            
+
+        Returns
+        -------
+            eeg_epochs: mne.Epochs
+    """
+    markers_np = np.zeros(markers.shape)
+    markers_np[:,:2] = markers.iloc[:,[0,1]]
+    event_categories = pd.Categorical(markers["Event"]) 
+    markers_np[:,2] = event_categories.codes
+
+    events_ids = np.zeros(markers.shape[0])
+    for event in events:
+        # - Missing implementation
+        # We have the categories in the data frame, where the 3rd column can be set as categories
+        # the code should look for the matching categories and provide just the indices that match the list of
+        # events. Then, create the epochs based on the markers from the selected events
+        
+        # categories_of_interest = event_categories.categories.str.contains(event)
+        # events_ids[markers_np[categories_of_interest.tolist(), :]] = 1
+        break
+    
+    # eeg_epochs = mne.Epochs(eeg, )
+
+    eeg_epochs = 0
+    return eeg_epochs
