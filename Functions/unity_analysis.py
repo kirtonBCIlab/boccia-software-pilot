@@ -41,7 +41,7 @@ def total_metrics(unity_stream:pd.DataFrame) -> list:
                 pipeline += 1
             # If experiment has started, consecutive 0's will be inside one run
             elif (val == 0):
-                if "41" in str_events[i]: total_selections[s][pipeline, 0] += 1
+                if ("41" in str_events[i]) and not ("1041" in str_events[i]): total_selections[s][pipeline, 0] += 1
                 elif "42" in str_events[i]: total_selections[s][pipeline, 1] += 1    
 
     return total_selections
