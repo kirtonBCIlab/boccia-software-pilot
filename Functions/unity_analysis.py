@@ -6,14 +6,14 @@
 import numpy as np
 import pandas as pd
 
-def total_metrics(unity_stream:pd.DataFrame) -> list:
+def total_metrics(unity_stream:list[pd.DataFrame]) -> list:
     """
         Returns the total correct and incorrect selections found in the `unity_stream`
 
         Parameters
         ----------
-            unity_stream: pd.DataFrame
-                Unity stream to evaluate, must contain columns for `[Time stamps, Signal value, Event]`
+            unity_stream: list[pd.DataFrame]
+                Unity streams to evaluate, must contain columns for `[Time stamps, Signal value, Event]`
             
         Returns
         -------
@@ -45,3 +45,8 @@ def total_metrics(unity_stream:pd.DataFrame) -> list:
                 elif "42" in str_events[i]: total_selections[s][pipeline, 1] += 1    
 
     return total_selections
+
+def itr(unity_stream:list[pd.DataFrame]):
+    # Missing implementation
+    a = 0
+    
