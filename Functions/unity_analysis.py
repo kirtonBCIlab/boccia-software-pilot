@@ -47,6 +47,6 @@ def total_metrics(unity_stream:list[pd.DataFrame]) -> list:
     return total_selections
 
 def itr(unity_stream:list[pd.DataFrame]):
-    # Missing implementation
+    # Missing information transfer rate implementation
     a = 0
     
