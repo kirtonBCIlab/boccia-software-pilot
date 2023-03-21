@@ -44,7 +44,48 @@ def total_metrics(unity_stream:list[pd.DataFrame]) -> list:
                 if ("41" in str_events[i]) and not ("1041" in str_events[i]): total_selections[s][pipeline, 0] += 1
                 elif "42" in str_events[i]: total_selections[s][pipeline, 1] += 1    
 
+        ## Implement
+        # - Change the code above for
+        # -- For loop that trims the experiment to the indices of a single pipeline
+        # -- Call the "count_events" function to return right and wrong answers
+
     return total_selections
+
+def ball_dropped(unity_stream:list[pd.DataFrame]) -> list:
+    """
+    """
+    # Missing implementation
+    # - Similar to total_metrics, but just look for the 1041, when they drop the ball
+    # - Return a list of len(nsubjects) with each item being an np.array of len(npipelines)
+    return None
+
+def count_events(event_list:list[str], event:str, not_event:str=None):
+    """ Returns the number of times that a certain event is found
+
+        Parameters
+        ----------
+            events_list: list[str]
+                List of events to look into
+            event: str
+                Event to count
+            not_event: str
+                If different from `None`, do not consider this types of events
+        
+        Returns
+        -------
+            event_count: int
+                Number of times the event was found
+    """
+    event_count = 0
+    for val in event_list:
+        if (not_event != None):
+            if(event in val) and not (not_event in val):
+                event_count += 1
+        else: 
+            if (event in val):
+                event_count += 1
+    
+    return event_count  
 
 def itr(unity_stream:list[pd.DataFrame]):
     # Missing information transfer rate implementation
