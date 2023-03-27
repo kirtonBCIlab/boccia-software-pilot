@@ -24,11 +24,12 @@ def total_metrics(unity_stream:list[pd.DataFrame]) -> list:
     total_selections = [None] * len(unity_stream)
 
     for s, stream in enumerate(unity_stream):
-        str_events = [event.split(',')[0] for event in stream["Event"].tolist()]
+        str_events = stream["Event"].to_list()
+        events_code = [event.split(',')[0] for event in stream["Event"].tolist()]
 
         # Look the index of the last "Starting experiment" str found. In case experiment was started
         # multiple times in the same recording
-        experiment_start = [1 if "Starting Experiment" in event else 0 for event in str_events]
+        experiment_start = [1 if "Starting Experiment" in event else 0 for event in events_code]
 
         # Determine number of pipelines in stream        
         n_pipelines = np.sum([1 if (event==1) and not (experiment_start[i+1]) else 0 for (i,event) in enumerate(experiment_start[:-1])])
@@ -41,8 +42,12 @@ def total_metrics(unity_stream:list[pd.DataFrame]) -> list:
                 pipeline += 1
             # If experiment has started, consecutive 0's will be inside one run
             elif (val == 0):
-                if ("41" in str_events[i]) and not ("1041" in str_events[i]): total_selections[s][pipeline, 0] += 1
-                elif "42" in str_events[i]: total_selections[s][pipeline, 1] += 1    
+                # Check if the time stamp of the current and previous event are the same
+                if (str_events[i].split(" ")[-1] == str_events[i-1].split(" ")[-1]):
+                        continue
+                else:
+                    if ("41" in events_code[i]) and not ("1041" in events_code[i]): total_selections[s][pipeline, 0] += 1
+                    elif "42" in events_code[i]: total_selections[s][pipeline, 1] += 1    
 
         ## Implement
         # - Change the code above for
