@@ -31,11 +31,11 @@ def total_metrics(unity_stream:list[pd.DataFrame]) -> list:
         experiment_start = [1 if "Starting Experiment" in event else 0 for event in str_events]
 
         # Determine number of pipelines in stream        
-        n_pipelines = np.sum([1 if (event==1) and (experiment_start[i+1]) else 0 for (i,event) in enumerate(experiment_start)])
+        n_pipelines = np.sum([1 if (event==1) and not (experiment_start[i+1]) else 0 for (i,event) in enumerate(experiment_start[:-1])])
         pipeline = -1                                   # Initialize pipeline index
-        total_selections[s] = np.zeros((n_pipelines, 2))  # Initialize array for [pipeline, [correct, incorrectz]]
+        total_selections[s] = np.zeros((n_pipelines, 2))  # Initialize array for [pipeline, [correct, incorrect]]
 
-        for (i,val) in enumerate(experiment_start):
+        for (i,val) in enumerate(experiment_start[:-1]):
             # If the experiment start index is the one selected
             if (val==1) and (experiment_start[i+1]==0):
                 pipeline += 1
@@ -57,6 +57,7 @@ def ball_dropped(unity_stream:list[pd.DataFrame]) -> list:
     # Missing implementation
     # - Similar to total_metrics, but just look for the 1041, when they drop the ball
     # - Return a list of len(nsubjects) with each item being an np.array of len(npipelines)
+
     return None
 
 def count_events(event_list:list[str], event:str, not_event:str=None):
