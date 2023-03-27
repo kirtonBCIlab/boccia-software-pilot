@@ -28,24 +28,24 @@ def import_data(xdf_file:str) -> tuple[mne.io.Raw, pd.DataFrame, pd.DataFrame]:
                 DataFrame with the stream of events sent from the BCI-essentials-unity frontend        
     """
 
-    [xdf_file, _] = pyxdf.load_xdf(xdf_file)
+    [xdf_data, _] = pyxdf.load_xdf(xdf_file)
 
     # First, determine first sample that needs to be subtracted from all streams
-    for i in range(len(xdf_file)):
-        stream_name = xdf_file[i]["info"]["name"][0]
+    for i in range(len(xdf_data)):
+        stream_name = xdf_data[i]["info"]["name"][0]
         if (stream_name == "DSI24") | (stream_name == "DSI7"):
-            first_sample = float(xdf_file[i]["footer"]["info"]["first_timestamp"][0])
+            first_sample = float(xdf_data[i]["footer"]["info"]["first_timestamp"][0])
 
     # Second, separate all streams and save data
-    for i in range(len(xdf_file)):
-        stream_name = xdf_file[i]["info"]["name"][0]
+    for i in range(len(xdf_data)):
+        stream_name = xdf_data[i]["info"]["name"][0]
 
         # Data stream
         if (stream_name == "DSI24") | (stream_name == "DSI7"):
-            eeg_np = xdf_file[i]["time_series"].T
-            srate = float(xdf_file[i]["info"]["nominal_srate"][0])
-            n_chans = len(xdf_file[i]['info']['desc'][0]['channels'][0]['channel'])
-            ch_names = [xdf_file[i]['info']['desc'][0]['channels'][0]['channel'][c]['label'][0] for c in range(n_chans)]
+            eeg_np = xdf_data[i]["time_series"].T
+            srate = float(xdf_data[i]["info"]["nominal_srate"][0])
+            n_chans = len(xdf_data[i]['info']['desc'][0]['channels'][0]['channel'])
+            ch_names = [xdf_data[i]['info']['desc'][0]['channels'][0]['channel'][c]['label'][0] for c in range(n_chans)]
             ch_types = "eeg"
             
             # Drop trigger channel
@@ -58,8 +58,8 @@ def import_data(xdf_file:str) -> tuple[mne.io.Raw, pd.DataFrame, pd.DataFrame]:
 
         # Unity stream
         if (stream_name == "PythonResponse"):
-            python_series = xdf_file[i]["time_series"]
-            python_time_stamps = xdf_file[i]["time_stamps"]
+            python_series = xdf_data[i]["time_series"]
+            python_time_stamps = xdf_data[i]["time_stamps"]
 
             dict_python = {
                 "Time stamps": np.array(python_time_stamps) - first_sample,
@@ -71,8 +71,8 @@ def import_data(xdf_file:str) -> tuple[mne.io.Raw, pd.DataFrame, pd.DataFrame]:
 
         # Unity events
         if (stream_name == "UnityEvents"):
-            unity_series = xdf_file[i]["time_series"]
-            unity_time_stamps = xdf_file[i]["time_stamps"]
+            unity_series = xdf_data[i]["time_series"]
+            unity_time_stamps = xdf_data[i]["time_stamps"]
 
             dict_unity = {
                 "Time stamps": np.array(unity_time_stamps) - first_sample,
