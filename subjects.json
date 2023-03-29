@@ -1,27 +1,37 @@
 {
     "p300": {
-        "sub-P001\\ses-S001": "sub-P001_ses-S001_task-T1_run-001_eeg.xdf",
-        "sub-P002\\ses-S001": "sub-P002_ses-S001_task-T1_run-001_eeg.xdf",
-        "sub-P003\\ses-S002": "sub-P003_ses-S002_task-T1_run-001_eeg.xdf",
-        "sub-P004\\ses-S004": "sub-P004_ses-S004_task-T1_run-001_eeg.xdf",
+        "sub-P001/ses-S001": "sub-P001_ses-S001_task-T1_run-001_eeg.xdf",
+        "sub-P002/ses-S001": "sub-P002_ses-S001_task-T1_run-001_eeg.xdf",
+        "sub-P003/ses-S004": "sub-P003_ses-S004_task-T1_run-001_eeg.xdf",
+        "sub-P004/ses-S004": "sub-P004_ses-S004_task-T1_run-001_eeg.xdf",
         "sub-P005": "block_T1_old2.xdf",
-        "sub-P006\\ses-S001": "sub-P006_ses-S001_task-T1_run-001_eeg.xdf",
-        "sub-P007\\ses-S004": "sub-P007_ses-S004_task-T1_run-001_eeg.xdf",
-        "sub-P008\\ses-S001": "sub-P008_ses-S001_task-T1_run-001_eeg.xdf"
+        "sub-P006/ses-S001": "sub-P006_ses-S001_task-T1_run-001_eeg.xdf",
+        "sub-P007/ses-S004": "sub-P007_ses-S004_task-T1_run-001_eeg.xdf",
+        "sub-P008/ses-S001": "sub-P008_ses-S001_task-T1_run-001_eeg.xdf",
+        "sub-P009/ses-S004": "sub-P009_ses-S004_task-T1_run-001_eeg.xdf",
+        "sub-P010/ses-S005": "sub-P010_ses-S005_task-T1_run-001_eeg.xdf"
     },
 
     "ssvep": {
-        "sub-P001\\ses-S002": "sub-P001_ses-S002_task-T1_run-001_eeg.xdf",
-        "sub-P002\\ses-S003": "sub-P002_ses-S003_task-T1_run-001_eeg.xdf",
-        "sub-P003\\ses-S003": "sub-P003_ses-S003_task-T1_run-001_eeg.xdf",
-        "sub-P004\\ses-S002": "sub-P004_ses-S002_task-T1_run-001_eeg.xdf",
+        "sub-P001/ses-S002": "sub-P001_ses-S002_task-T1_run-001_eeg.xdf",
+        "sub-P002/ses-S003": "sub-P002_ses-S003_task-T1_run-001_eeg.xdf",
+        "sub-P003/ses-S005": "sub-P003_ses-S005_task-T1_run-001_eeg.xdf",
+        "sub-P003/ses-S006": "sub-P003_ses-S006_task-T1_run-001_eeg.xdf",
+        "sub-P003/ses-S007": "sub-P003_ses-S007_task-T1_run-001_eeg.xdf",
+        "sub-P004/ses-S002": "sub-P004_ses-S002_task-T1_run-001_eeg.xdf",
         "sub-P005": "block_T1_old4.xdf",
-        "sub-P006\\ses-S003": "sub-P006_ses-S003_task-T1_run-001_eeg.xdf",
-        "sub-P007\\ses-S001": "sub-P007_ses-S001_task-T1_run-001_eeg.xdf",
-        "sub-P007\\ses-S002": "sub-P007_ses-S002_task-T1_run-001_eeg.xdf",
-        "sub-P007\\ses-S003": "sub-P007_ses-S003_task-T1_run-001_eeg.xdf",
-        "sub-P008\\ses-S002": "sub-P008_ses-S002_task-T1_run-001_eeg.xdf",
-        "sub-P008\\ses-S003": "sub-P008_ses-S003_task-T1_run-001_eeg.xdf",
-        "sub-P008\\ses-S004": "sub-P008_ses-S004_task-T1_run-001_eeg.xdf"
+        "sub-P006/ses-S003": "sub-P006_ses-S003_task-T1_run-001_eeg.xdf",
+        "sub-P007/ses-S001": "sub-P007_ses-S001_task-T1_run-001_eeg.xdf",
+        "sub-P007/ses-S002": "sub-P007_ses-S002_task-T1_run-001_eeg.xdf",
+        "sub-P007/ses-S003": "sub-P007_ses-S003_task-T1_run-001_eeg.xdf",
+        "sub-P008/ses-S002": "sub-P008_ses-S002_task-T1_run-001_eeg.xdf",
+        "sub-P008/ses-S003": "sub-P008_ses-S003_task-T1_run-001_eeg.xdf",
+        "sub-P008/ses-S004": "sub-P008_ses-S004_task-T1_run-001_eeg.xdf",
+        "sub-P009/ses-S001": "sub-P009_ses-S001_task-T1_run-001_eeg.xdf",
+        "sub-P009/ses-S002": "sub-P009_ses-S002_task-T1_run-001_eeg_old1.xdf",
+        "sub-P009/ses-S003": "sub-P009_ses-S003_task-T1_run-001_eeg.xdf",
+        "sub-P010/ses-S001": "sub-P010_ses-S001_task-T1_run-001_eeg.xdf",
+        "sub-P010/ses-S002": "sub-P010_ses-S002_task-T1_run-001_eeg.xdf",
+        "sub-P010/ses-S004": "sub-P010_ses-S004_task-T1_run-001_eeg.xdf"
     }
 }
