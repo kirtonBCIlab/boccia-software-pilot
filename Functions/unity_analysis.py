@@ -6,7 +6,7 @@
 import numpy as np
 import pandas as pd
 
-def total_metrics(unity_stream:list[pd.DataFrame]) -> list:
+def total_metrics(unity_stream):
     """
         Returns the total correct and incorrect selections found in the `unity_stream`
 
@@ -56,7 +56,7 @@ def total_metrics(unity_stream:list[pd.DataFrame]) -> list:
 
     return total_selections
 
-def ball_dropped(unity_stream:list[pd.DataFrame]) -> list:
+def ball_dropped(unity_stream):
     """
     """
     # Missing implementation
@@ -65,7 +65,7 @@ def ball_dropped(unity_stream:list[pd.DataFrame]) -> list:
 
     return None
 
-def count_events(event_list:list[str], event:str, not_event:str=None):
+def count_events(event_list, event, not_event=None):
     """ Returns the number of times that a certain event is found
 
         Parameters
@@ -93,7 +93,7 @@ def count_events(event_list:list[str], event:str, not_event:str=None):
     
     return event_count  
 
-def itr(unity_stream:list[pd.DataFrame]):
+def itr(unity_stream):
     # Missing information transfer rate implementation
     a = 0
     

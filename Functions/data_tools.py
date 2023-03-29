@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 import scipy.signal as signal
 
-def import_data(xdf_file:str) -> tuple[mne.io.Raw, pd.DataFrame, pd.DataFrame]:
+def import_data(xdf_file:str):
     """
         Imports xdf file and returns the EEG stream, Python response, and Unity stream
 
@@ -84,7 +84,7 @@ def import_data(xdf_file:str) -> tuple[mne.io.Raw, pd.DataFrame, pd.DataFrame]:
     
     return (eeg_mne, python_stream, unity_stream)
 
-def create_epochs(eeg:mne.io.Raw, markers:pd.DataFrame, time:list[float], events=list[str]) -> mne.Epochs:
+def create_epochs(eeg, markers:pd.DataFrame, time, events):
     """
         Creates MNE epoch data from the desired markers (can be Unity or Python stream)
 
